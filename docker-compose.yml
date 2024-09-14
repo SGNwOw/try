@@ -21,27 +21,33 @@ services:
 
       - "5433:5432"
 
+      
+
 
   backend:
-
     container_name: container_2         # Move container_name here
-
     build:
-
       context: ./backend
-
       dockerfile: Dockerfile
-
     command: python manage.py runserver 0.0.0.0:8000
-
     volumes:
-
       - ./backend:/app
-
     ports:
-
       - "8000:8000"
-
     depends_on:
-
       - db
+
+  frontend:
+    build: ./frontend/myapp
+    container_name: frontend_nextgenlearn
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+
+  
+
+  
+
+  
