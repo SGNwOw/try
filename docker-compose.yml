@@ -37,9 +37,11 @@ services:
     depends_on:
       - db
 
+    
+
   frontend:
     build: ./frontend/myapp
-    container_name: frontend_nextgenlearn
+    container_name: my_frontend
     ports:
       - "3000:3000"
     environment:
